@@ -39,7 +39,7 @@ services:
     image: adminer
     container_name: adminer
     ports:
-      - "5000:5000"
+      - "5000:8080"
 
 #  Only uncomment this block if you have access to project
   discordbot:
