@@ -1,0 +1,10 @@
+# Ignore .env cause contains all sensible variables
+.env
+
+# Those are data volumes use to persist data.
+postgres
+nginx
+
+# Are personnal project so repo are private
+website
+discordBot 
