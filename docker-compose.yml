@@ -13,6 +13,7 @@ services:
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
     ports:
       - "80:80"
+      - "443:443"
     restart: always
 
   portainer:
@@ -33,17 +34,20 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes: 
       - "./postgres/data:/var/lib/postgresql/data"
+      - "/usr/local/etc/php/:/"
 
   adminer:
     image: adminer
     container_name: adminer
+    ports:
+      - "5000:5000"
 
   basicphp:  
     build:
       context: ./website
     container_name: basic-php
     volumes:
-      - "./website:/var/www/html"
+      - "./website/basicphp:/var/www/html"
   
 #  Only uncomment this block if you have access to project
 #  discordbot:
