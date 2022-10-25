@@ -43,18 +43,19 @@ services:
       - "5000:5000"
 
 #  Only uncomment this block if you have access to project
-  discordbot:
-    build:
-      context: ./discordBot
-    container_name: discordbot
-    environment:
-      - DISCORD_TOKEN=${DISCORD_TOKEN}
-      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
-    volumes:
-      - "./discordBot/:/home/app/"
-    restart: always
+#  discordbot:
+#    build:
+#      context: ./discordBot
+#    container_name: discordbot
+#    environment:
+#      - DISCORD_TOKEN=${DISCORD_TOKEN}
+#      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+#    volumes:
+#      - "./discordBot/:/home/app/"
+#    restart: always
 
 # Should only be used on local as it show phpinfo()
+# It is ony used as a test to assure php server is working
   basicphp:  
     build:
       context: ./website
@@ -63,14 +64,14 @@ services:
       - "./website/basicphp:/var/www/html"
 
 #  Only uncomment this block if you have access to project
-  hypixelzcomparator:  
-    build:
-      context: ./website
-    container_name: hypixelzcomparator
-    environment:
-      - DB_URL=db
-      - DB_DATABASE=${POSTGRES_DB}
-      - DB_USERNAME=${POSTGRES_USER}
-      - DB_PASSWORD=${POSTGRES_PASSWORD}
-    volumes:
-      - "./website/HypixelzComparator:/var/www/html"
+#  hypixelzcomparator:  
+#    build:
+#      context: ./website
+#    container_name: hypixelzcomparator
+#    environment:
+#      - DB_URL=db
+#      - DB_DATABASE=${POSTGRES_DB}
+#      - DB_USERNAME=${POSTGRES_USER}
+#      - DB_PASSWORD=${POSTGRES_PASSWORD}
+#    volumes:
+#      - "./website/HypixelzComparator:/var/www/html"
