@@ -3,8 +3,8 @@
 
 # Those are data volumes use to persist data.
 postgres
-nginx
+portainer
 
 # Are personnal project so repo are private
-website
+website/HypixelzComparator
 discordBot 

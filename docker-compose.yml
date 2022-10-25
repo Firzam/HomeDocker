@@ -7,7 +7,8 @@ services:
     container_name: nginx
     depends_on:
       - adminer
-      - hypixelzcomparator
+      - basicphp
+#      - hypixelzcomparator
     volumes:
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
     ports:
@@ -37,25 +38,34 @@ services:
     image: adminer
     container_name: adminer
 
-  discordbot:
+  basicphp:  
     build:
-      context: ./discordBot
-    container_name: discordbot
-    environment:
-      - DISCORD_TOKEN=${DISCORD_TOKEN}
-      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      context: ./website
+    container_name: basic-php
     volumes:
-      - "./discordBot/:/home/app/"
-    restart: always
+      - "./website:/var/www/html"
+  
+#  Only uncomment this block if you have access to project
+#  discordbot:
+#    build:
+#      context: ./discordBot
+#    container_name: discordbot
+#    environment:
+#      - DISCORD_TOKEN=${DISCORD_TOKEN}
+#      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+#    volumes:
+#      - "./discordBot/:/home/app/"
+#    restart: always
 
-  hypixelzcomparator:  
-    build:
-      context: ./website/HypixelzComparator
-    container_name: hypixelzcomparator
-    environment:
-      - DB_URL=db
-      - DB_DATABASE=${POSTGRES_DB}
-      - DB_USERNAME=${POSTGRES_USER}
-      - DB_PASSWORD=${POSTGRES_PASSWORD}
-    volumes:
-      - "./website/HypixelzComparator:/var/www/html"
+#  Only uncomment this block if you have access to project
+#  hypixelzcomparator:  
+#    build:
+#      context: ./website
+#    container_name: hypixelzcomparator
+#    environment:
+#      - DB_URL=db
+#      - DB_DATABASE=${POSTGRES_DB}
+#      - DB_USERNAME=${POSTGRES_USER}
+#      - DB_PASSWORD=${POSTGRES_PASSWORD}
+#    volumes:
+#      - "./website/HypixelzComparator:/var/www/html"
